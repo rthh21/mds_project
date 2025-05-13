@@ -2,7 +2,42 @@
 *= require_tree .
 */
 
-body {
+html {
     color: white;
-    background-color: black;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    /* background */
+    background-color: #000000;
+    background-image: url('background.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+body {
+    padding: none !important;
+    margin: none !important;
+    
+    /* flex */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+header{
+    /* border: solid red 3px; */
+    /* filter: blur(5px); */
+    backdrop-filter: blur(30px) hue-rotate(20deg);
+    border-radius: 40px;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    margin-top: 10px;
+    width: 80vw;
+    height: 80px;
 }
