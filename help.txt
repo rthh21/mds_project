@@ -1,0 +1,14 @@
+(!) sql query
+psql your_database_name
+*query*  \q to exit
+
+(!) make someone organizer
+rails console
+user = User.find_by(email: "person@example.com")
+user.role = "organizer" # or user.organizer! if using enum
+user.save
+
+(!) delete all sign up users
+rails console
+User.delete_all
+
