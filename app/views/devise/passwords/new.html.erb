@@ -1,16 +1,31 @@
-<h2>Forgot your password?</h2>
-
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+<html>
+  <head>
+  <%= stylesheet_link_tag 'devise/shared.css', media: 'all', data: { turbolinks: false } %>
+  <%= stylesheet_link_tag 'devise/registrations.css', media: 'all', data: { turbolinks: false } %>
+  <%= stylesheet_link_tag 'application.css', media: 'all', data: { turbolinks: false } %>
+  </head>
+  <body>
+    <img src="<%= asset_path('gradient.png') %>" alt="Background" class="image" />
+    <div class="container">
+      <div class="wrapper">
+        <h2>Forgot your password?</h2>
+        <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+          <%= render "devise/shared/error_messages", resource: resource %>
+        
+          <div class="field">
+            <%= f.label :email %><br />
+            <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          </div>
+        
+          <div class="actions">
+            <%= f.submit "Send me reset password instructions" %>
+          </div>
+        <% end %>
+        <div class="or">   Or if you already have an account:   </div>
+        <div class = "links"> 
+          <%= render "devise/shared/links" %>
+        </div>
+        </div>
+      </div>
+  </body>
+</html>

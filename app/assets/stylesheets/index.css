@@ -8,7 +8,7 @@ html {
 
     /* background */
     background-color: #000000;
-    background-image: url('background.jpg');
+    /* background-image: url('gradient1.png'); */
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -16,8 +16,8 @@ html {
 }
 
 body {
-    padding: none !important;
-    margin: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
     
     /* flex */
     display: flex;
@@ -29,19 +29,44 @@ body {
 header{
     /* border: solid red 3px; */
     /* filter: blur(5px); */
-    backdrop-filter: blur(30px) hue-rotate(20deg);
-    border-radius: 40px;
+    /* backdrop-filter: blur(30px) hue-rotate(10deg) brightness(1.2); */
+    /* background-color: rgb(253, 0, 136); */
+    border: solid 5px white;
+    border-radius: 2ppx;
+    margin-top: 1em;
     
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     
-    margin-top: 10px;
-    width: 80vw;
-    height: 80px;
+    width: 25vw;
+    height: 40px;
 }
 
-p{
-    font-size: 15px;
+
+.wrapper {
+    margin-top: 1em;
+    position: relative; /* Make the wrapper a positioned container */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90vw;
+    height: 80vh;
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+    object-fit:fill;
+    z-index: 1;
+}
+
+.wrapper h1 {
+    position: absolute; /* Position the text over the image */
+    color: white;
+    font-size: 3rem;
+    z-index: 2; /* Ensure the text is above the image */
+    text-align: center;
 }

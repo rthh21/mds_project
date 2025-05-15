@@ -17,14 +17,16 @@ html {
 
 body {
     padding: 0 !important;
-    margin: 0 !important;
     
-    /* flex */
+    /* margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 20px; */
+    
+    /* flex
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    height: 100vh; /* Ensure the body takes the full viewport height */
+    justify-content: center; */
 }
 
 header{
@@ -38,7 +40,6 @@ header{
     justify-content: center;
     align-items: center;
     
-    margin-top: 10px;
     width: 80vw;
     height: 80px;
 }
