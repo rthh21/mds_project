@@ -44,6 +44,10 @@ body{
     font-size: 55px !important;
     margin-top: none !important;
 }
+.field{
+    display: flex;
+    flex-direction: column;
+}
 
 .field label {
     font-size: 20px;

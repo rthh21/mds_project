@@ -8,13 +8,28 @@
   </head>
 <body>
     <header>
-      login | register | account
+      <nav>
+        <ul class="header_list">
+          <li><a href="users/sign_in">login</a></li>
+          <li><a href="users/sign_in">register</a></li>
+          <li><a href="#">account</a></li>
+        </ul>
     </header>
     
     <main>
       <div class="wrapper">
         <img src="<%= asset_path('gradient.png') %>" alt="Background" class="image" />
-        <h1>welcome</h1>
+        <div class="center">
+          <h1>welcome</h1>
+          <div class="check_status_login">
+            <% if user_signed_in? %>
+            <p>Logged in as <%= current_user.email %></p>
+            <a class="dashboard" href="/dashboard">Dashboard</a>
+            <% else %>
+            <p>Please log in or sign up!</p>
+            <% end %>
+          </div>
+        </div>
       </div>
     </main>
     

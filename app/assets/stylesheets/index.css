@@ -1,10 +1,12 @@
 /*
 *= require_tree .
 */
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Spectral:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
 
 html {
     color: white;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family:  'Kanit', 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
 
     /* background */
     background-color: #000000;
@@ -31,7 +33,11 @@ header{
     /* filter: blur(5px); */
     /* backdrop-filter: blur(30px) hue-rotate(10deg) brightness(1.2); */
     /* background-color: rgb(253, 0, 136); */
-    border: solid 5px white;
+    font-family: 'Montserrat', Tahoma, Geneva, Verdana, sans-serif !important;
+    
+    border: solid 5px rgb(253, 0, 136);
+    background-color: rgb(0, 0, 0);
+
     border-radius: 2ppx;
     margin-top: 1em;
     
@@ -42,8 +48,14 @@ header{
     
     width: 25vw;
     height: 40px;
+    
+    transition: 0.3s;
 }
 
+header:hover{
+    border: solid 5px rgb(253, 0, 136);
+    background-color: rgb(253, 0, 136);
+}
 
 .wrapper {
     margin-top: 1em;
@@ -63,10 +75,72 @@ header{
     z-index: 1;
 }
 
-.wrapper h1 {
-    position: absolute; /* Position the text over the image */
+.center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     color: white;
     font-size: 3rem;
-    z-index: 2; /* Ensure the text is above the image */
+    font-weight: 500;
+    
+    z-index: 2;
     text-align: center;
+    
+}
+
+h1{
+    margin: 0 !important;
+}
+
+.check_status_login p{
+    color: rgb(194, 159, 255);
+    font-size: 20px !important;
+}
+
+.dashboard{
+    font-size: 20px;
+    border: solid 5px rgb(0, 89, 253);
+    background-color: rgb(0, 89, 253);
+    padding: 7px;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+    border-radius: 50em;
+    color: white;
+    text-decoration: none;
+    list-style: none;
+    transition: 0.3s;
+}
+
+.dashboard:hover{
+    border: solid 5px rgb(0, 89, 253);
+    background-color: rgb(0, 0, 0);
+    
+}
+
+/* ------------------------------------------------------- */
+.header_list {
+    display: flex;
+    flex-direction: row;
+    gap: 120px;
+
+    color: white;
+    text-decoration: none;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.header_list li{
+    transition: 0.3s;
+}
+
+.header_list li:hover{
+    scale: 120%;
+}
+
+.header_list a {
+    color: white;
+    text-decoration: none;
+    font-weight: 800;
 }
