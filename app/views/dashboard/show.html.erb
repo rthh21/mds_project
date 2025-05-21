@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ProjectMds</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag 'index', media: 'all', data: { turbolinks: false } %>
+    <%= stylesheet_link_tag 'dashboard', media: 'all', data: { turbolinks: false } %>
+  </head>
+<body>
+    <header>
+      <nav>
+        <ul class="header_list">
+          <li><a href="../../">home</a></li>
+          <li><a href="#">about</a></li>
+          <li><a href="#"><%= button_to 'logout', destroy_user_session_path, method: :delete ,  class: "plain-text-link" %></a></li>
+        </ul>
+    </header>
+    
+    <main>
+        <div class = "welcome-user-event"> 
+            <p class = "welcome-name">Hello, <i><%= current_user.email %></i><p>
+            <div class="current-time" id="current-time"></div>
+            <div class="current-date" id="current-date"></div>
+            <p class="next-event">next event: </p>
+        </div>
+        
+        <div class="event-wrapper" style="background-image: url('<%= asset_path('gradient1.png') %>');">
+          <div class="text-dashboard">dashboard</div>
+          <div class="list-all-events">
+            <% if @events.present? %>
+              <% @events.each do |event| %>
+                <div class="event-wrapper-each">
+                  <div class="event-title-each"><%= event.title %></div>
+                  <a class = "event-join" href="#"> join </a>
+                  <div class="event-details-each">
+                    <!-- You can add more event details here if needed -->
+                  </div>
+                </div> <!-- This closes .event-wrapper-each -->
+              <% end %> <!-- This closes the each loop -->
+            <% else %>
+              <p>No events found.</p>
+            <% end %>
+          </div>
+        </div>
+    </main>
+    
+    <footer>
+    </footer>
+  </body>
+</html>
+
+<script>
+    function updateDateTime() {
+      const now = new Date();
+    
+      // Format time as HH:MM
+      const hours = now.getHours().toString().padStart(2, '0');
+      const minutes = now.getMinutes().toString().padStart(2, '0');
+      document.getElementById('current-time').textContent = `${hours}:${minutes}`;
+    
+      // Format date as "21 May"
+      const day = now.getDate();
+      const month = now.toLocaleString('en', { month: 'long' });
+      document.getElementById('current-date').textContent = `${day} ${month}`;
+    }
+    
+    updateDateTime(); // Initial call
+    setInterval(updateDateTime, 1000 * 60); // Update every minute
+</script>

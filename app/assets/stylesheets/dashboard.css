@@ -1,0 +1,144 @@
+body{
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center;
+    align-items: center;
+}
+
+main{
+    margin-top: 5em;
+    height: 80vh;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    
+    gap: 1.5em;
+}
+
+/* ---------------------------------------------------------------------------------------------------- */
+/* CONTAINER DREAPTA - POZA */
+.event-wrapper {
+    background-color: rgb(0, 0, 0) !important;
+    background-size:cover;         /* Makes the image cover the whole container */
+    background-position: center;    /* Centers the image */
+    width: 70vw;
+    height: 85vh;
+    border-radius: 30px;
+    overflow: hidden;
+    position: relative;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    z-index: 100;
+}
+
+.text-dashboard{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    font-weight: 600;
+    font-size: 70px;
+    transform: translateY(-0.7em);
+}
+
+.list-all-events{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    height: 70%;
+    
+    overflow-x: scroll;
+}
+
+
+
+.event-wrapper-each {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content:space-between;
+    
+    background: rgb(22, 19, 22);
+    border: 5px solid #5d00ad;
+    border-radius: 45px;
+    margin: 0.5rem;
+    padding: 2rem;
+    width: 60em;
+    height: 3em;
+    
+    transition: 0.3s;
+}
+
+.event-wrapper-each:hover {
+    border: 5px solid rgb(253, 0, 136);
+    width: 70em;
+}
+
+.event-title-each {
+  font-size: 2.5em;
+  font-weight: bold;
+  color: #fff;
+}
+
+.event-join {
+  font-weight: bold;
+  color: #fff;
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.event-details-each {
+  color: #2e9afe;
+  font-size: 0.95rem;
+  margin-left: 24px;
+}
+
+/* ---------------------------------------------------------------------------------------------------- */
+/* CONTAINER STANGA */
+p{
+    margin: 0 !important;
+}
+
+.welcome-user-event{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 7em;
+    
+    width: 25vw;
+    height: 85vh;
+
+    border-radius: 30px;
+    background-color: rgb(22, 19, 22);
+}
+
+.welcome-name{
+    font-size: 2em !important;
+}
+
+.welcome-name i {
+    color: rgb(253, 0, 136);
+}
+
+.current-time{
+    font-size: 7em;
+}
+
+.current-date{
+    font-size: 2em;
+    transform: translateY(-4.7em);
+}
+
+.next-event{
+    font-size: 2em;
+}
