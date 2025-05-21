@@ -1,6 +1,26 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!
-
+    
+  def new
+    @event = Event.new
+  end
+    
+  def create
+    unless current_user.role == 'organizer'
+      redirect_to root_path, alert: "Only organizers can create events."
+      return
+    end
+  
+    @event = Event.new(event_params)
+    @event.organizer = current_user
+  
+    if @event.save
+      redirect_to @event, notice: "Event created successfully."
+    else
+      render :new
+    end
+  end
+  
   def show
     @event = Event.find(params[:id])
     @organizer = @event.organizer
@@ -11,4 +31,11 @@ class EventsController < ApplicationController
       nil
     end
   end
+  
+  private
+  
+  def event_params
+    params.require(:event).permit(:title, :description, :start_time, :end_time, :stream_url)
+  end
+
 end

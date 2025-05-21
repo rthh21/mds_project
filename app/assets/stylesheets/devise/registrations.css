@@ -17,6 +17,7 @@ body{
 
 .container{
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 
@@ -131,3 +132,4 @@ body{
 .links{
     margin-top: 10px;
 }
+

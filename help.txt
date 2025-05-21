@@ -12,3 +12,7 @@ user.save
 rails console
 User.delete_all
 
+(!) reset id counter
+Event.delete_all
+ActiveRecord::Base.connection.reset_pk_sequence!('events')
+

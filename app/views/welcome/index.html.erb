@@ -11,8 +11,9 @@
       <nav>
         <ul class="header_list">
           <li><a href="users/sign_in">login</a></li>
-          <li><a href="users/sign_in">register</a></li>
-          <li><a href="#">account</a></li>
+          <li><a href="users/sign_up">register</a></li>
+          <li><a href="#"><%= button_to 'logout', destroy_user_session_path, method: :delete ,  class: "plain-text-link" %></a></li>
+          <li><a href="#">about</a></li>
         </ul>
     </header>
     
@@ -22,7 +23,7 @@
         <div class="center">
           <h1>welcome</h1>
           <div class="check_status_login">
-            <a class="dashboard" href="/dashboard">Dashboard</a>
+            <a class="dashboard" href="/dashboard/show">Dashboard</a>
           </div>
         </div>
       </div>
