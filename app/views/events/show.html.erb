@@ -1,0 +1,74 @@
+<h1><%= @event.title %></h1>
+<p><%= @event.description %></p>
+<p>
+  <strong>Organizer:</strong>
+  <%= @organizer.email %>
+  <% if @organizer.role == "organizer" %>
+    (Organizer)
+  <% end %>
+</p>
+
+<% if @hls_url.present? %>
+  <video
+    id="video"
+    controls
+    style="width: 100%; max-width: 720px; background: #000;"
+    poster="https://dummyimage.com/720x405/cccccc/000000&text=Loading+Stream..."
+  ></video>
+  <button id="go-live-btn" style="display:none; margin-top:10px;">Go to Live</button>
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      var video = document.getElementById('video');
+      var goLiveBtn = document.getElementById('go-live-btn');
+      var hlsUrl = "<%= j @hls_url %>";
+      var LIVE_EDGE_THRESHOLD = 2; // seconds
+
+      function isAtLiveEdge() {
+        if (video.seekable.length) {
+          var liveEdge = video.seekable.end(0);
+          return (liveEdge - video.currentTime) < LIVE_EDGE_THRESHOLD;
+        }
+        return true;
+      }
+
+      function updateGoLiveButton() {
+        if (isAtLiveEdge()) {
+          goLiveBtn.style.display = 'none';
+        } else {
+          goLiveBtn.style.display = 'inline-block';
+        }
+      }
+
+      goLiveBtn.addEventListener('click', function() {
+        if (video.seekable.length) {
+          var liveEdge = video.seekable.end(0);
+          video.currentTime = liveEdge - 0.1; // Seek to near the live edge
+          video.play();
+        }
+      });
+
+      video.addEventListener('timeupdate', updateGoLiveButton);
+      video.addEventListener('seeked', updateGoLiveButton);
+
+      if (Hls.isSupported()) {
+        var hls = new Hls();
+        hls.loadSource(hlsUrl);
+        hls.attachMedia(video);
+        hls.on(Hls.Events.MANIFEST_PARSED, function() {
+          video.play();
+        });
+      } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+        // For Safari and some iOS browsers
+        video.src = hlsUrl;
+        video.addEventListener('loadedmetadata', function() {
+          video.play();
+        });
+      } else {
+        video.outerHTML = "<p>Your browser does not support HLS playback.</p>";
+      }
+    });
+  </script>
+<% else %>
+  <p>No live stream for this event.</p>
+<% end %>

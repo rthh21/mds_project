@@ -34,6 +34,7 @@ gem "thruster", require: false
 gem 'propshaft' # FIX CSS !!!!!!!!!!!
 gem 'devise'
 gem 'devise-api', github: 'nejdetkadir/devise-api', branch: 'main'
+gem 'actioncable'
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin Ajax possible
 # gem "rack-cors"
@@ -48,3 +49,5 @@ group :development, :test do
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
 end
+
+gem "importmap-rails", "~> 2.1"

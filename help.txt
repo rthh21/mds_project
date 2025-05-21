@@ -1,5 +1,5 @@
 (!) sql query
-psql your_database_name
+psql project_mds_development 
 *query*  \q to exit
 
 (!) make someone organizer

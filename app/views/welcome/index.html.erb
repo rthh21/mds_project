@@ -4,7 +4,7 @@
     <title>ProjectMds</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= stylesheet_link_tag 'index.css', media: 'all', data: { turbolinks: false } %>
+    <%= stylesheet_link_tag 'index', media: 'all', data: { turbolinks: false } %>
   </head>
 <body>
     <header>
@@ -22,12 +22,7 @@
         <div class="center">
           <h1>welcome</h1>
           <div class="check_status_login">
-            <% if user_signed_in? %>
-            <p>Logged in as <%= current_user.email %></p>
             <a class="dashboard" href="/dashboard">Dashboard</a>
-            <% else %>
-            <p>Please log in or sign up!</p>
-            <% end %>
           </div>
         </div>
       </div>
