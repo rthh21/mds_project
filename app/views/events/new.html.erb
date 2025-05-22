@@ -3,6 +3,7 @@
   <head>
     <%= stylesheet_link_tag 'devise/registrations.css', media: 'all', data: { turbolinks: false } %>
     <%= stylesheet_link_tag 'application.css', media: 'all', data: { turbolinks: false } %>
+    <%= stylesheet_link_tag 'events.css', media: 'all', data: { turbolinks: false } %>
     <%= stylesheet_link_tag 'devise/shared.css', media: 'all', data: { turbolinks: false } %>
   </head>
   
@@ -10,9 +11,8 @@
     <img src="<%= asset_path('gradient.png') %>" alt="Background" class="image" />
     <div class = "container">
       <div class = "wrapper">
-        <div class = "ls">Sign up
-        </div>
-        <p>Enter your credentials to sign up!</p>
+        <div class = "ls">Create event</div>
+        <p>Enter the details for your event!</p>
       
               <%= form_with model: @event, local: true do |f| %>
         <% if @event.errors.any? %>
@@ -26,27 +26,41 @@
           </div>
         <% end %>
       
-        <div>
+        <div class="field">
           <%= f.label :title %><br>
-          <%= f.text_field :title %>
+          <%= f.text_field :title %>  
         </div>
-        <div>
+        <div class="field">
           <%= f.label :description %><br>
           <%= f.text_area :description %>
         </div>
-        <div>
-          <%= f.label :start_time %><br>
-          <%= f.datetime_select :start_time %>
+        <div class="field-select">
+          <div class="datetime-group">
+            <%= f.label :start_time %>
+            <div class="date-select">
+              <%= f.date_select :start_time, order: [:day, :month, :year] %>
+            </div>
+            <div class="time-select">
+              <%= f.time_select :start_time, minute_step: 1, include_seconds: false %>
+            </div>
+          </div>
         </div>
-        <div>
-          <%= f.label :end_time %><br>
-          <%= f.datetime_select :end_time %>
+        <div class="field-select">
+          <div class="datetime-group">
+            <%= f.label :end_time %>
+            <div class="date-select">
+              <%= f.date_select :end_time, order: [:day, :month, :year] %>
+            </div>
+            <div class="time-select">
+              <%= f.time_select :end_time, minute_step: 1, include_seconds: false %>
+            </div>
+          </div>
         </div>
-        <div>
+        <div class="field">
           <%= f.label :stream_url %><br>
           <%= f.text_field :stream_url %>
         </div>
-        <div>
+        <div class="field">
           <%= f.submit "Create Event" %>
         </div>
       <% end %>

@@ -34,6 +34,8 @@ body{
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    
+    overflow-x: scroll;
 }
 .wrapper form{
     display: flex;
@@ -44,6 +46,7 @@ body{
 .ls{
     font-size: 55px !important;
     margin-top: none !important;
+    display: block  ;
 }
 .field{
     display: flex;

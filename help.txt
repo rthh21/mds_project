@@ -4,7 +4,7 @@ psql project_mds_development
 
 (!) make someone organizer
 rails console
-user = User.find_by(email: "person@example.com")
+user = User.find_by(email: "admin@test.ro")
 user.role = "organizer" # or user.organizer! if using enum
 user.save
 

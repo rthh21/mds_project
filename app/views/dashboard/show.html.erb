@@ -12,8 +12,9 @@
       <nav>
         <ul class="header_list">
           <li><a href="../../">home</a></li>
-          <li><a href="#">about</a></li>
+          <li><a href="../events/new">create event</a></li>
           <li><a href="#"><%= button_to 'logout', destroy_user_session_path, method: :delete ,  class: "plain-text-link" %></a></li>
+          <li><a href="#">about</a></li>
         </ul>
     </header>
     
@@ -32,7 +33,7 @@
               <% @events.each do |event| %>
                 <div class="event-wrapper-each">
                   <div class="event-title-each"><%= event.title %></div>
-                  <a class = "event-join" href="#"> join </a>
+                  <a class = "event-join" href="../../events/<%= event.id %>"> join </a>
                   <div class="event-details-each">
                     <!-- You can add more event details here if needed -->
                   </div>
