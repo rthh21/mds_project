@@ -2,6 +2,10 @@ class Event < ApplicationRecord
   belongs_to :organizer, class_name: 'User'
   has_many :registrations
   has_many :users, through: :registrations
+  
+  def started?
+    start_time.in_time_zone < Time.current
+  end
 
   # Add stream_url column if not exists
   def self.add_stream_url_column

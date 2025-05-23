@@ -35,26 +35,12 @@
           <%= f.text_area :description %>
         </div>
         <div class="field-select">
-          <div class="datetime-group">
-            <%= f.label :start_time %>
-            <div class="date-select">
-              <%= f.date_select :start_time, order: [:day, :month, :year] %>
-            </div>
-            <div class="time-select">
-              <%= f.time_select :start_time, minute_step: 1, include_seconds: false %>
-            </div>
-          </div>
+          <%= f.label :start_time %><br>
+          <%= f.datetime_select :start_time, order: [:day, :month, :year, :hour, :minute] %>
         </div>
         <div class="field-select">
-          <div class="datetime-group">
-            <%= f.label :end_time %>
-            <div class="date-select">
-              <%= f.date_select :end_time, order: [:day, :month, :year] %>
-            </div>
-            <div class="time-select">
-              <%= f.time_select :end_time, minute_step: 1, include_seconds: false %>
-            </div>
-          </div>
+          <%= f.label :end_time %><br>
+          <%= f.datetime_select :end_time, order: [:day, :month, :year, :hour, :minute] %>
         </div>
         <div class="field">
           <%= f.label :stream_url %><br>

@@ -15,9 +15,9 @@
           <% if @current_user.role == 'organizer' %>
             <li><a href="../events/new">create event</a></li>
           <% end %>
+          <li><a href="#">about</a></li>
           <li><a href="#">account</a></li>
           <li><a href="#"><%= button_to 'logout', destroy_user_session_path, method: :delete ,  class: "plain-text-link" %></a></li>
-          <li><a href="#">about</a></li>
         </ul>
     </header>
     
@@ -26,7 +26,7 @@
             <p class = "welcome-name">Hello, <i><%= current_user.email %></i><p>
             <div class="current-time" id="current-time"></div>
             <div class="current-date" id="current-date"></div>
-            <p class="next-event">next event: </p>
+            <p class="bottom-text">events</p>
         </div>
         
         <div class="event-wrapper" style="background-image: url('<%= asset_path('gradient1.png') %>');">
@@ -36,10 +36,10 @@
               <% @events.each do |event| %>
                 <div class="event-wrapper-each">
                   <div class="event-title-each"><%= event.title %></div>
-                  <a class = "event-join" href="../../events/<%= event.id %>"> join </a>
                   <div class="event-details-each">
                     <!-- You can add more event details here if needed -->
                   </div>
+                  <a class = "event-join" href="../../events/<%= event.id %>"> JOIN </a>
                 </div> <!-- This closes .event-wrapper-each -->
               <% end %> <!-- This closes the each loop -->
             <% else %>

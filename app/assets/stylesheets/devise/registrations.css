@@ -136,3 +136,6 @@ body{
     margin-top: 10px;
 }
 
+input:hover{
+  border: 1px solid #ffffff;
+}
