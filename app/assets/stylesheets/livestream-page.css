@@ -1,6 +1,6 @@
 html{
     background-image: linear-gradient(
-        #ea00a86b -10%,
+        #ea00656b -10%,
         rgb(0, 0, 0) 60%
     );
 }
@@ -21,15 +21,14 @@ header{
 /* Style for video */
 .video-container{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     
 }
 
 video{
-    width: 100%;
-    max-width: 1480px;
+    width: 1480px;
     /* border: solid 5px #ad00dc; */
     background: #000;
     border-radius: 30px;
@@ -94,7 +93,7 @@ video{
 }
 
 /* EROR TYPE STYLE */
-.no-live, .early-live{ 
+.live-time-error{ 
     box-shadow: 0 5px 70px 10px black;
     display: flex;
     flex-direction: column;

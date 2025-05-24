@@ -16,3 +16,6 @@ User.delete_all
 Event.delete_all
 ActiveRecord::Base.connection.reset_pk_sequence!('events')
 
+(!) Utile
+Kiss TV: https://tv.broadcasting.ro/kisstv/a629c031-2170-4ee9-a36d-87a891aa3131.m3u8
+Magic TV: https://tv.broadcasting.ro/magictv/925f90db-5c88-4190-a53d-5163cdffe6f4.m3u8

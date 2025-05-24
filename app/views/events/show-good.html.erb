@@ -6,7 +6,6 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'index', media: 'all', data: { turbolinks: false } %>
     <%= stylesheet_link_tag 'livestream-page', media: 'all', data: { turbolinks: false } %>
-    <%= stylesheet_link_tag 'chat', media: 'all', data: { turbolinks: false } %>
   </head>
 <body>
     <header>
@@ -38,7 +37,6 @@
                 <button class="live-button" id="go-live-btn" style="display:none;">Go to Live</button>
               </div>
             </div>
-            <div class = "chat">test_test_test_test_test_test_test_test_test_test_test_test_test_test_test_test_test_test_test_test_test_test_test_test_test_test_test_test_test</div>
           </div>
         <% else %>
           <div class="live-time-error">Stream is not available yet!</div>
@@ -46,7 +44,6 @@
       <% elsif @event.upcoming? %>
         <div class="live-time-error">Event hasn't started yet!</div>
       <% end %>
-      
     </main>
     
     <footer>

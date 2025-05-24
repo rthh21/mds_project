@@ -10,7 +10,8 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
   get 'dashboard', to: 'dashboard#show'
   get "dashboard/show"
-  
+  get 'about', to: 'about#show', as: :about
+
   # root to: 'events#index'
   root to: 'welcome#index'
 end

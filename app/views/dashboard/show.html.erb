@@ -15,7 +15,7 @@
           <% if @current_user.role == 'organizer' %>
             <li><a href="../events/new">create event</a></li>
           <% end %>
-          <li><a href="#">about</a></li>
+          <li><a href="../../about">about</a></li>
           <li><a href="#">account</a></li>
           <li><a href="#"><%= button_to 'logout', destroy_user_session_path, method: :delete ,  class: "plain-text-link" %></a></li>
         </ul>
@@ -40,7 +40,7 @@
                 </div> <!-- This closes .event-wrapper-each -->
               <% end %> <!-- This closes the each loop -->
             <% else %>
-              <p>No events found.</p>
+              <div class = "no-events">No events found.</div>
             <% end %>
           </div>
         </div>
