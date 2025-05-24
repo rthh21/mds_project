@@ -50,3 +50,13 @@ header{
 p{
     font-size: 15px;
 }
+
+.welcome-text{
+    display: flex;
+    flex-direction: row;
+    gap: .1em;
+}
+
+.username{
+    color: rgb(254, 0, 135);
+}

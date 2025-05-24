@@ -6,6 +6,7 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'index', media: 'all', data: { turbolinks: false } %>
     <%= stylesheet_link_tag 'livestream-page', media: 'all', data: { turbolinks: false } %>
+    <%= stylesheet_link_tag 'chat', media: 'all', data: { turbolinks: false } %>
   </head>
 <body>
     <header>
@@ -32,11 +33,12 @@
                 poster="https://dummyimage.com/720x405/cccccc/000000&text=Loading+Stream..."
               ></video>
               <div class="video-footer">
-                <div class="footer-container">Host: <%= @organizer.email %></div>
+                <div class="footer-container">Host: <%= @organizer.username %></div>
                 <div class="live-title">Event name: <%= @event.title %> | <%= @event.description.presence || "No description" %></div>
                 <button class="live-button" id="go-live-btn" style="display:none;">Go to Live</button>
               </div>
             </div>
+            <%# <div class = "chat">test_test_test_test_test_test_test_test_test_test_test_test_test_test_test_test_test_test_test_test_test_test_test_test_test_test_test_test_test</div> %>
           </div>
         <% else %>
           <div class="live-time-error">Stream is not available yet!</div>
@@ -44,6 +46,7 @@
       <% elsif @event.upcoming? %>
         <div class="live-time-error">Event hasn't started yet!</div>
       <% end %>
+      
     </main>
     
     <footer>

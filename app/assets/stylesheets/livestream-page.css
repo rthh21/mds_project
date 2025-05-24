@@ -76,7 +76,7 @@ video{
 }
 
 .live-title{
-    width: 66%;
+    flex: 1;
     align-items: start !important;
 }
 

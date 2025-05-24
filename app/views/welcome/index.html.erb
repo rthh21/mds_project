@@ -10,10 +10,15 @@
     <header>
       <nav>
         <ul class="header_list">
-          <li><a href="users/sign_in">login</a></li>
-          <li><a href="users/sign_up">register</a></li>
+          <% if !user_signed_in? %>
+            <li><a href="users/sign_in">login</a></li>
+            <li><a href="users/sign_up">register</a></li>
+          <% end %>
           <li><a href="../../about">about</a></li>
-          <li><a href="#"><%= button_to 'logout', destroy_user_session_path, method: :delete ,  class: "plain-text-link" %></a></li>
+          <% if user_signed_in? %>
+            <li><a href="users/edit">account</a></li>
+            <li><a href="#"><%= button_to 'logout', destroy_user_session_path, method: :delete ,  class: "plain-text-link" %></a></li>
+          <% end %>
         </ul>
     </header>
     
@@ -21,7 +26,13 @@
       <div class="wrapper">
         <img src="<%= asset_path('gradient.png') %>" alt="Background" class="image" />
         <div class="center">
-          <h1>welcome</h1>
+          <h1 class="welcome-text">
+            <% if user_signed_in? %>
+              welcome, <div class="username"><i><%= current_user.username %></i></div>
+            <%else%>
+              welcome
+            <% end %>
+          </h1>
           <div class="check_status_login">
             <a class="dashboard" href="/dashboard/show">Dashboard</a>
           </div>

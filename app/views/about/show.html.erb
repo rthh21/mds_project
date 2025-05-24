@@ -13,6 +13,9 @@
         <ul class="header_list">
           <li><a href="../../">home</a></li>
           <li><a href="../../dashboard">dashboard</a></li>
+          <% if user_signed_in? %>
+            <li><a href="#"><%= button_to 'logout', destroy_user_session_path, method: :delete ,  class: "plain-text-link" %></a></li>
+          <% end %>
         </ul>
     </header>
     

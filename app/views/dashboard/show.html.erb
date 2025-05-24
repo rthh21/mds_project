@@ -16,21 +16,21 @@
             <li><a href="../events/new">create event</a></li>
           <% end %>
           <li><a href="../../about">about</a></li>
-          <li><a href="#">account</a></li>
+          <li><a href="../users/edit">account</a></li>
           <li><a href="#"><%= button_to 'logout', destroy_user_session_path, method: :delete ,  class: "plain-text-link" %></a></li>
         </ul>
     </header>
     
     <main>
         <div class = "welcome-user-event"> 
-            <p class = "welcome-name">Hello, <i><%= current_user.email %></i><p>
+            <p class = "welcome-name">Hello, <i><%= current_user.username %></i><p>
             <div class="current-time" id="current-time"></div>
             <div class="current-date" id="current-date"></div>
-            <p class="bottom-text">events</p>
+            <p class="bottom-text">dashboard</p>
         </div>
         
         <div class="event-wrapper" style="background-image: url('<%= asset_path('E9wZNovU.png') %>');">
-          <div class="text-dashboard">dashboard</div>
+          <div class="text-dashboard">events</div>
           <div class="list-all-events">
             <% if @events.present? %>
               <% @events.each do |event| %>
