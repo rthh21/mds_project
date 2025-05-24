@@ -29,16 +29,13 @@
             <p class="bottom-text">events</p>
         </div>
         
-        <div class="event-wrapper" style="background-image: url('<%= asset_path('gradient1.png') %>');">
+        <div class="event-wrapper" style="background-image: url('<%= asset_path('E9wZNovU.png') %>');">
           <div class="text-dashboard">dashboard</div>
           <div class="list-all-events">
             <% if @events.present? %>
               <% @events.each do |event| %>
                 <div class="event-wrapper-each">
                   <div class="event-title-each"><%= event.title %></div>
-                  <div class="event-details-each">
-                    <!-- You can add more event details here if needed -->
-                  </div>
                   <a class = "event-join" href="../../events/<%= event.id %>"> JOIN </a>
                 </div> <!-- This closes .event-wrapper-each -->
               <% end %> <!-- This closes the each loop -->

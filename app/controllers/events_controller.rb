@@ -21,6 +21,16 @@ class EventsController < ApplicationController
     end
   end
   
+  def destroy
+    @event = Event.find(params[:id])
+    if current_user.role == 'organizer'
+      @event.destroy
+      redirect_to events_path, notice: 'Event deleted.'
+    else
+      redirect_to events_path, alert: 'You are not authorized to delete this event.'
+    end
+  end
+  
   def show
     @event = Event.find(params[:id])
     @organizer = @event.organizer
