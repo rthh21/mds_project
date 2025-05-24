@@ -1,0 +1,26 @@
+html{
+    height: 100vh;
+    background-image: linear-gradient(
+        #ea00656b -10%,
+        rgb(0, 0, 0) 60%
+    );
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.edit_user{
+    margin-top: 5em;
+}
+
+.edit_user::after{
+    content: "";
+    display: block;
+    width: 100%;
+    height: 5px;
+    border-radius: 5px;
+    background-color: #3f3f3f;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
