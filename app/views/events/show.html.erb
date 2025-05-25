@@ -13,7 +13,10 @@
       <nav>
         <ul class="header_list">
           <li><a href="../../">home</a></li>
-          <li><a href="../../dashboard">dashboard</a></li>
+          <li><a href="../../dashboard">dashboard</a></li>      
+          <% if current_user == @event.organizer %>
+              <li><a><%= link_to "edit event", edit_event_path(@event)%></a></li>
+          <% end %>
           <li><a href="#"><%= button_to 'logout', destroy_user_session_path, method: :delete ,  class: "plain-text-link" %></a></li>
           <li><a href="#">about</a></li>
         </ul>
@@ -21,7 +24,7 @@
     
     <main>
       <% if @event.ended? %>
-        <div class="live-time-error">This event has ended.</div>
+        <div class="error">This event has ended.</div>
       <% elsif @event.started? %>
         <% if @hls_url.present? %>
           <div class="video-container">
@@ -41,12 +44,11 @@
             <%# <div class = "chat">test_test_test_test_test_test_test_test_test_test_test_test_test_test_test_test_test_test_test_test_test_test_test_test_test_test_test_test_test</div> %>
           </div>
         <% else %>
-          <div class="live-time-error">Stream is not available yet!</div>
+          <div class="error">Stream is not available yet!</div>
         <% end %>
       <% elsif @event.upcoming? %>
-        <div class="live-time-error">Event hasn't started yet!</div>
+        <div class="error">Event hasn't started yet!</div>
       <% end %>
-      
     </main>
     
     <footer>

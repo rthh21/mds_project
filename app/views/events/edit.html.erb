@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%= stylesheet_link_tag 'devise/registrations.css', media: 'all', data: { turbolinks: false } %>
+    <%= stylesheet_link_tag 'application.css', media: 'all', data: { turbolinks: false } %>
+    <%= stylesheet_link_tag 'events.css', media: 'all', data: { turbolinks: false } %>
+    <%= stylesheet_link_tag 'devise/shared.css', media: 'all', data: { turbolinks: false } %>
+  </head>
+  
+  <body>
+    <img src="<%= asset_path('gradient.png') %>" alt="Background" class="image" />
+    <div class="container">
+      <div class="wrapper">
+        <div class="ls">Edit event</div>
+        <p>Update the details for your event!</p>
+      
+        <%= form_with model: @event, local: true do |f| %>
+          <% if @event.errors.any? %>
+            <div id="error_explanation" class="error">
+              <% @event.errors.full_messages.each do |message| %>
+                <p><%= message %></p>
+              <% end %>
+            </div>
+          <% end %>
+        
+          <div class="field">
+            <%= f.label :title %><br>
+            <%= f.text_field :title, required: true %>  
+          </div>
+          <div class="field">
+            <%= f.label :description %><br>
+            <%= f.text_area :description %>
+          </div>
+          <div class="field-select">
+            <%= f.label :start_time %><br>
+            <%= f.datetime_select :start_time, order: [:day, :month, :year, :hour, :minute] %>
+          </div>
+          <div class="field-select">
+            <%= f.label :end_time %><br>
+            <%= f.datetime_select :end_time, order: [:day, :month, :year, :hour, :minute] %>
+          </div>
+          <div class="field">
+            <%= f.label :stream_url %><br>
+            <%= f.text_field :stream_url, required: true %>
+          </div>
+          <div class="field-update">
+            <div class = "actions"><%= f.submit "Update Event"%></div>
+            <a class="actions" href="../../../">Home</a>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </body>
+</html>

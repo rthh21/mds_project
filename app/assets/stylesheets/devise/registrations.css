@@ -96,7 +96,7 @@ body{
     justify-self: center;
 }
 
-.actions > input, a, button {
+.actions > input, a, button{
     background-color: rgb(253, 0, 136);
     border: 4px solid transparent !important;
     color: rgb(255, 255, 255);

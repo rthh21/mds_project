@@ -11,6 +11,7 @@ html {
 
     /* background */
     background-color: rgb(0, 0, 0);
+    overflow: hidden;
     /* background-image: url('background.jpg');
     background-position: center;
     background-repeat: no-repeat;
@@ -59,4 +60,33 @@ p{
 
 .username{
     color: rgb(254, 0, 135);
+}
+
+.alert, .notice{
+    margin-top: 1.5vw;
+}
+
+
+
+.no-events, .error, .live-button, .footer-container, .live-title{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+    color: white;
+    font-size: 1em !important;
+    font-weight: 800;
+    font-family: 'Montserrat', Tahoma, Geneva, Verdana, sans-serif !important;
+    
+    border: solid 5px rgb(253, 0, 136);
+    background-color: rgb(0, 0, 0);
+    border-radius: 20em;
+    
+    width: auto;
+    padding-left: 2em;
+    padding-right: 2em;
+    padding-top: 0.4em;
+    padding-bottom: 0.4em;    
+    transition: 0.3s;
 }

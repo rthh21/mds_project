@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get "errors/not_found"
+  get "errors/internal_server_error"
   devise_for :users, controllers: {
   }
   namespace :admin do
@@ -6,11 +8,14 @@ Rails.application.routes.draw do
   end
   
 
-  resources :events, only: [:new, :create, :index, :show]
+  resources :events, only: [:new, :create, :edit, :update, :index, :show]
   get "up" => "rails/health#show", as: :rails_health_check
   get 'dashboard', to: 'dashboard#show'
   get "dashboard/show"
   get 'about', to: 'about#show', as: :about
+  
+  match '*unmatched', to: 'errors#not_found', via: :all
+  match '*unmatched', to: 'errors#internal_server_error', via: :all
 
   # root to: 'events#index'
   root to: 'welcome#index'

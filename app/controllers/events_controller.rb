@@ -21,6 +21,32 @@ class EventsController < ApplicationController
     end
   end
   
+  def show
+    @event = Event.find(params[:id])
+    @organizer = @event.organizer
+    @hls_url = @event.stream_url
+  end
+  
+  def edit
+    @event = Event.find(params[:id])
+  end
+
+  def update
+    @event = Event.find(params[:id])
+    if @event.update(event_params)
+      redirect_to @event, notice: 'Event was successfully updated.'
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+  
+  private
+  
+  def event_params
+    params.require(:event).permit(:title, :description, :start_time, :end_time, :stream_url)
+  end
+
+  
   def destroy
     @event = Event.find(params[:id])
     if current_user.role == 'organizer'
@@ -30,13 +56,7 @@ class EventsController < ApplicationController
       redirect_to events_path, alert: 'You are not authorized to delete this event.'
     end
   end
-  
-  def show
-    @event = Event.find(params[:id])
-    @organizer = @event.organizer
-    @hls_url = @event.stream_url
-  end
-  
+
   private
   
   def event_params

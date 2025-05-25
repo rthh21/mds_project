@@ -67,3 +67,18 @@ select:hover, textarea:hover, input:hover{
   border-radius: 5px; 
   margin: 10px;
 }
+
+/* EDIT PAGE */
+
+.field-update{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+}
+/* Style in registrations.css ^^^^ */
+
+.actions{
+  margin: 0 !important;
+}
