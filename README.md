@@ -1,24 +1,41 @@
-# README
+# Rails Live Event Application
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A Ruby on Rails application for hosting and managing live events with real-time video streaming, event scheduling, and user authentication.
 
-Things you may want to cover:
+## Features
 
-* Ruby version
+- User registration and authentication (Devise)
+- Organizer and attendee roles
+- Create, edit, and delete events
+- Live video streaming (HLS support)
+- Dashboard for event management
+- Responsive design
 
-* System dependencies
+---
 
-* Configuration
+## Getting Started
 
-* Database creation
+Follow these steps to set up and run the application.
 
-* Database initialization
+### 1. Prerequisites
 
-* How to run the test suite
+- **Ruby** (version 3.1+ recommended)
+- **Rails** (version 7+ recommended)
+- **PostgreSQL** (or your preferred database)
 
-* Services (job queues, cache servers, search engines, etc.)
+### 2. Clone the Repository
 
-* Deployment instructions
+- git clone https://github.com/your-username/your-repo-name.git
+- cd your-repo-name
 
-* ...
+### 3. Set Up the Database
+
+Create and migrate the database:
+
+- rails db:create
+- rails db:migrate
+
+### 4. Bundle and run!
+
+- bundle install
+- rails s

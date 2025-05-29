@@ -41,7 +41,6 @@
                 <button class="live-button" id="go-live-btn" style="display:none;">Go to Live</button>
               </div>
             </div>
-            <%# <div class = "chat">test_test_test_test_test_test_test_test_test_test_test_test_test_test_test_test_test_test_test_test_test_test_test_test_test_test_test_test_test</div> %>
           </div>
         <% else %>
           <div class="error">Stream is not available yet!</div>
@@ -58,7 +57,8 @@
 
 <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 <script>
-  document.addEventListener("DOMContentLoaded", function() {
+  <%# Wait for DOM to finish before running script %>
+  document.addEventListener("DOMContentLoaded", function() { 
     var video = document.getElementById('video');
     var goLiveBtn = document.getElementById('go-live-btn');
     var hlsUrl = "<%= j @hls_url %>";
@@ -71,11 +71,12 @@
       }
       return true;
     }
-
+    <%# show live button if currently live %>
     function updateGoLiveButton() {
       goLiveBtn.style.display = 'inline-block';  
     }
 
+    <%# when live button is clicked, jump to live edge and start playback %>
     goLiveBtn.addEventListener('click', function() {
       if (video.seekable.length) {
         var liveEdge = video.seekable.end(0);
@@ -87,6 +88,7 @@
     video.addEventListener('timeupdate', updateGoLiveButton);
     video.addEventListener('seeked', updateGoLiveButton);
 
+ <%# ------------------------------------------------------------- INIT --------------------- %>
     if (Hls.isSupported()) {
       var hls = new Hls();
       hls.loadSource(hlsUrl);
@@ -95,7 +97,7 @@
         video.play();
       });
     } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-      // For Safari and some iOS browsers
+      // For Safari / some iOS browsers
       video.src = hlsUrl;
       video.addEventListener('loadedmetadata', function() {
         video.play();

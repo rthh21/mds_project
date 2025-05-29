@@ -1,4 +1,3 @@
-# lib/tasks/hls.rake
 namespace :hls do
   desc "Process video for a room"
   task :generate, [:room_id, :file] => :environment do |t, args|

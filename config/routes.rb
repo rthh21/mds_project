@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :events, only: [:edit, :update]
   end
+  delete '/events/:id', to: 'events#destroy', as: 'event'
   
 
   resources :events, only: [:new, :create, :edit, :update, :index, :show]
@@ -17,6 +18,5 @@ Rails.application.routes.draw do
   match '*unmatched', to: 'errors#not_found', via: :all
   match '*unmatched', to: 'errors#internal_server_error', via: :all
 
-  # root to: 'events#index'
   root to: 'welcome#index'
 end

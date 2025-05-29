@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user! # First run Devise auth check
     
   def new
     @event = Event.new
@@ -13,7 +13,8 @@ class EventsController < ApplicationController
   
     @event = Event.new(event_params)
     @event.organizer = current_user
-  
+    
+    # else show the event create page
     if @event.save
       redirect_to @event, notice: "Event created successfully."
     else
@@ -21,6 +22,7 @@ class EventsController < ApplicationController
     end
   end
   
+  # def params for css styilng
   def show
     @event = Event.find(params[:id])
     @organizer = @event.organizer
@@ -40,27 +42,19 @@ class EventsController < ApplicationController
     end
   end
   
-  private
-  
-  def event_params
-    params.require(:event).permit(:title, :description, :start_time, :end_time, :stream_url)
-  end
-
-  
   def destroy
     @event = Event.find(params[:id])
     if current_user.role == 'organizer'
       @event.destroy
-      redirect_to events_path, notice: 'Event deleted.'
+      redirect_to dashboard_path
     else
-      redirect_to events_path, alert: 'You are not authorized to delete this event.'
+      redirect_to dashboard_path
     end
   end
-
+  
   private
   
   def event_params
     params.require(:event).permit(:title, :description, :start_time, :end_time, :stream_url)
   end
-
 end

@@ -47,6 +47,11 @@
             <div class = "actions"><%= f.submit "Update Event"%></div>
             <a class="actions" href="../../../">Home</a>
           </div>
+          <% if current_user.role == 'organizer' %>
+            <div class="actions" style = "padding: 0.7em">
+              <%= button_to "Delete", @event, method: :delete, class: "delete button" %>
+            </div>
+          <% end %>
         <% end %>
       </div>
     </div>
