@@ -18,5 +18,6 @@ Rails.application.routes.draw do
   match '*unmatched', to: 'errors#not_found', via: :all
   match '*unmatched', to: 'errors#internal_server_error', via: :all
 
+  # root to: 'events#index'
   root to: 'welcome#index'
 end

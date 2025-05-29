@@ -62,6 +62,7 @@ a{
 
 .about-text  p:hover a{
     color: white;
+    scale: 110%;
 }
 
 .project-name{

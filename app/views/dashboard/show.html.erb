@@ -35,7 +35,14 @@
             <% if @events.present? %>
               <% @events.each do |event| %>
                 <div class="event-wrapper-each">
-                  <div class="event-title-each"><%= event.title %></div>
+                  <div class="event-title-each">
+                    <%= event.title %> 
+                    <div class = "separator-line"></div>
+                    <div class = "event-time-each">
+                      <div>Start: <%= event.start_time %></div>
+                      <div>End: <%= event.end_time %></div>
+                    </div>
+                  </div>
                   <a class = "event-join" href="../../events/<%= event.id %>"> JOIN </a>
                 </div> <!-- This closes .event-wrapper-each -->
               <% end %> <!-- This closes the each loop -->
