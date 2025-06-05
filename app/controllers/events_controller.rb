@@ -30,10 +30,12 @@ class EventsController < ApplicationController
   end
   
   def edit
+    unless current_user.role == 'organizer'
     @event = Event.find(params[:id])
   end
 
   def update
+    unless current_user.role == 'organizer'
     @event = Event.find(params[:id])
     if @event.update(event_params)
       redirect_to @event, notice: 'Event was successfully updated.'
@@ -43,6 +45,7 @@ class EventsController < ApplicationController
   end
   
   def destroy
+    unless current_user.role == 'organizer'
     @event = Event.find(params[:id])
     if current_user.role == 'organizer'
       @event.destroy
