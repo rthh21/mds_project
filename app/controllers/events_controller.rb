@@ -1,63 +1,67 @@
 class EventsController < ApplicationController
   before_action :authenticate_user! # First run Devise auth check
-    
+  before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :require_organizer, only: [:new, :create]
+  before_action :require_organizer_or_event_owner, only: [:edit, :update, :destroy]
+
   def new
     @event = Event.new
   end
-    
+
   def create
-    unless current_user.role == 'organizer'
-      redirect_to root_path, alert: "Only organizers can create events."
-      return
-    end
-  
     @event = Event.new(event_params)
     @event.organizer = current_user
-    
-    # else show the event create page
+
     if @event.save
       redirect_to @event, notice: "Event created successfully."
     else
       render :new
     end
   end
-  
-  # def params for css styilng
+
   def show
-    @event = Event.find(params[:id])
     @organizer = @event.organizer
     @hls_url = @event.stream_url
   end
-  
+
   def edit
-    unless current_user.role == 'organizer'
-    @event = Event.find(params[:id])
+    # @event is already set by before_action :set_event
   end
 
   def update
-    unless current_user.role == 'organizer'
-    @event = Event.find(params[:id])
     if @event.update(event_params)
       redirect_to @event, notice: 'Event was successfully updated.'
     else
       render :edit, status: :unprocessable_entity
     end
   end
-  
+
   def destroy
-    unless current_user.role == 'organizer'
-    @event = Event.find(params[:id])
-    if current_user.role == 'organizer'
-      @event.destroy
-      redirect_to dashboard_path
-    else
-      redirect_to dashboard_path
-    end
+    @event.destroy
+    redirect_to dashboard_path, notice: 'Event was successfully deleted.'
   end
-  
+
   private
-  
+
+  def set_event
+    @event = Event.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    redirect_to root_path, alert: "Event not found."
+  end
+
   def event_params
     params.require(:event).permit(:title, :description, :start_time, :end_time, :stream_url)
+  end
+
+  def require_organizer
+    unless current_user.role == 'organizer'
+      redirect_to root_path, alert: "Only organizers can perform this action."
+    end
+  end
+
+  def require_organizer_or_event_owner
+    unless current_user.role == 'organizer' && @event.organizer == current_user
+      redirect_to root_path, alert: "You are not authorized to perform this action."
+    end
   end
 end
